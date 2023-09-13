@@ -20,12 +20,23 @@ export default function CreateAccount() {
   };
 
   useEffect(() => {
-    register('firstName');
-    register('lastName');
-    register('username');
-    register('email');
-    register('password');
+    register('firstName', {
+      required: true,
+    });
+    register('lastName', {
+      required: true,
+    });
+    register('username', {
+      required: true,
+    });
+    register('email', {
+      required: true,
+    });
+    register('password', {
+      required: true,
+    });
   }, [register]);
+
   return (
     <AuthLayout>
       <TextInput
@@ -41,7 +52,7 @@ export default function CreateAccount() {
         returnKeyType='next'
         onSubmitEditing={() => onNext(usernameRef)}
         placeholderTextColor={'rgba(255, 255, 255, 0.6)'}
-        onChangeText={(text) => setValue('firstName', text)}
+        onChangeText={(text) => setValue('lastName', text)}
       />
       <TextInput
         ref={usernameRef}
@@ -50,7 +61,7 @@ export default function CreateAccount() {
         returnKeyType='next'
         onSubmitEditing={() => onNext(emailRef)}
         placeholderTextColor={'rgba(255, 255, 255, 0.6)'}
-        onChangeText={(text) => setValue('firstName', text)}
+        onChangeText={(text) => setValue('username', text)}
       />
       <TextInput
         ref={emailRef}
@@ -70,11 +81,11 @@ export default function CreateAccount() {
         lastOne={true}
         placeholderTextColor={'rgba(255, 255, 255, 0.6)'}
         onChangeText={(text) => setValue('password', text)}
-        onPress={handleSubmit(onValid)}
+        onSubmitEditing={handleSubmit(onValid)}
       />
       <AuthButton
         text='Create Account'
-        disabled={true}
+        disabled={false}
         onPress={handleSubmit(onValid)}
       />
     </AuthLayout>

@@ -37,7 +37,9 @@ export default function AuthLayout({ children }) {
             width: '100%',
           }}
           behavior='position'
-          keyboardVerticalOffset={Platform.OS === 'ios' ? 50 : 0}>
+          keyboardVerticalOffset={
+            Platform.OS === 'ios' ? 20 : Platform.OS === 'android' ? 0 : 0
+          }>
           <Logo
             resizeMode='contain'
             source={require('../../assets/logo.png')}
